@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 
 public class LoginTest extends BaseTest {
 
-    @DataProvider(name = "credentials", parallel = false)
+    @DataProvider(name = "credentials", parallel = true)
     public Object[][] dataProvider() {
         return new Object[][]{
                 new String[]{"standard_user", "secret_sauce"},

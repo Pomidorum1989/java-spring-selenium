@@ -17,7 +17,7 @@ public class WaitUtils {
 
     @Lazy
     @Autowired
-    private WebDriver driver;
+    private final WebDriver driver;
 
     public WaitUtils(WebDriver driver) {
         this.driver = driver;
