@@ -11,6 +11,7 @@ repositories {
 }
 
 dependencies {
+    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-test
     implementation("org.springframework.boot:spring-boot-starter-test:3.3.1") {
         exclude(group = "org.springframework.boot", module = "spring-boot-starter-logging")
     }
