@@ -20,7 +20,7 @@ import java.util.Objects;
 
 @Slf4j
 @ContextConfiguration(classes = SpringTestConfig.class)
-public class BaseTest extends AbstractTestNGSpringContextTests {
+public abstract class BaseTest extends AbstractTestNGSpringContextTests {
 
     @Autowired
     protected ThreadLocal<WebDriver> webDriverThreadLocal;
