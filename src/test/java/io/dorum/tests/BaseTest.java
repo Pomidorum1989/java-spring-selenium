@@ -2,6 +2,7 @@ package io.dorum.tests;
 
 import io.dorum.config.SpringTestConfig;
 import lombok.extern.log4j.Log4j2;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.logging.log4j.ThreadContext;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -18,7 +19,7 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.Objects;
 
-@Log4j2
+@Slf4j
 @ContextConfiguration(classes = SpringTestConfig.class)
 public class BaseTest extends AbstractTestNGSpringContextTests {
 
@@ -29,7 +30,6 @@ public class BaseTest extends AbstractTestNGSpringContextTests {
     public void beforeMethod(Method method) {
         ThreadContext.put("threadName", String.valueOf(Thread.currentThread().threadId()));
         log.info("Method {} is started", method.getName());
-        applicationContext.getAutowireCapableBeanFactory().autowireBean(this);
     }
 
     @AfterMethod(alwaysRun = true)

@@ -2,6 +2,7 @@ package io.dorum.config;
 
 import io.dorum.utils.WebDriverFactory;
 import lombok.extern.log4j.Log4j2;
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.*;
@@ -12,7 +13,7 @@ import java.util.Objects;
 @Configuration
 @ComponentScan(basePackages = "io.dorum")
 @PropertySource("classpath:application.properties")
-@Log4j2
+@Slf4j
 public class SpringTestConfig {
 
     @Autowired

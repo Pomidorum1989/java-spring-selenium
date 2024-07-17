@@ -1,14 +1,16 @@
 package io.dorum.pages;
 
 import io.dorum.utils.WaitUtils;
-import lombok.extern.log4j.Log4j2;
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 
-@Log4j2
+
+@Slf4j
 public abstract class BasePage {
 
+    @Lazy
     @Autowired
     protected WaitUtils waitUtils;
 
