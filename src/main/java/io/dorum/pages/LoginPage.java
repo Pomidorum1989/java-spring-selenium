@@ -3,7 +3,6 @@ package io.dorum.pages;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.springframework.stereotype.Component;
 
@@ -16,10 +15,6 @@ public class LoginPage extends BasePage {
     private final By loginButton = By.id("login-button");
     private final By errorMessage = By.xpath("//h3[@data-test='error']");
     private final By logo = By.xpath("//div[@class = 'login_logo']");
-
-    public LoginPage(WebDriver driver) {
-        super(driver);
-    }
 
     public void enterUsername(String username) {
         log.info("Entering username: {}", username);

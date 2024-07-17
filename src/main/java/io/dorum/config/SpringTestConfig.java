@@ -3,6 +3,7 @@ package io.dorum.config;
 import io.dorum.utils.WebDriverFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ThreadGuard;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.*;
 import org.springframework.core.env.Environment;
@@ -29,7 +30,7 @@ public class SpringTestConfig {
     public WebDriver webDriver(ThreadLocal<WebDriver> threadLocal) {
         if (Objects.isNull(threadLocal.get())) {
             log.info("Web driver {} instance was created", Thread.currentThread().threadId());
-            threadLocal.set(WebDriverFactory.createDriver(env.getProperty("browser")));
+            threadLocal.set(ThreadGuard.protect(WebDriverFactory.createDriver(env.getProperty("browser"))));
         }
         return threadLocal.get();
     }

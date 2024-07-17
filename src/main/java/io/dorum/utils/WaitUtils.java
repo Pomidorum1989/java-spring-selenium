@@ -16,11 +16,7 @@ public class WaitUtils {
 
     @Lazy
     @Autowired
-    private final WebDriver driver;
-
-    public WaitUtils(WebDriver driver) {
-        this.driver = driver;
-    }
+    private WebDriver driver;
 
     private FluentWait<WebDriver> createFluentWait() {
         return new FluentWait<>(driver)

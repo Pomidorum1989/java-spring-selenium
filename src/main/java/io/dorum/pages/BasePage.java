@@ -18,10 +18,6 @@ public abstract class BasePage {
     @Autowired
     protected WebDriver driver;
 
-    public BasePage(WebDriver driver) {
-        this.driver = driver;
-    }
-
     public void openURL(String url) {
         driver.get(url);
         log.info("Url {} is opened", url);
