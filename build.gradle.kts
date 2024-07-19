@@ -49,5 +49,5 @@ tasks.test {
     testLogging {
         events("passed", "skipped", "failed")
     }
-    jvmArgs = mutableListOf("-XX:+EnableDynamicAgentLoading", "-Djdk.instrument.traceUsage")
+    jvmArgs("-XX:+EnableDynamicAgentLoading")
 }

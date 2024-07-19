@@ -6,6 +6,7 @@ import org.apache.logging.log4j.ThreadContext;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.io.FileHandler;
+import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
@@ -16,14 +17,13 @@ import org.testng.annotations.BeforeMethod;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.util.Objects;
 
 @Slf4j
 @ContextConfiguration(classes = SpringTestConfig.class)
 public abstract class BaseTest extends AbstractTestNGSpringContextTests {
 
     @Autowired
-    protected ThreadLocal<WebDriver> webDriverThreadLocal;
+    protected ObjectProvider<WebDriver> driverProvider;
 
     @BeforeMethod
     public void beforeMethod(Method method) {
@@ -37,16 +37,14 @@ public abstract class BaseTest extends AbstractTestNGSpringContextTests {
             getPageScreenShoot("Failure_" + method.getName());
         }
         ThreadContext.clearAll();
-        if (Objects.nonNull(webDriverThreadLocal.get())) {
-            webDriverThreadLocal.remove();
-        }
+        driverProvider.getObject().quit();
         log.info("Method {} is finished", method.getName());
     }
 
     protected void getPageScreenShoot(String fileName) {
         try {
-            String name = "/build/screenshots/" + fileName + ".png";
-            File screenshotFile = ((TakesScreenshot) webDriverThreadLocal.get()).getScreenshotAs(org.openqa.selenium.OutputType.FILE);
+            String name = "./build/screenshots/" + fileName + ".png";
+            File screenshotFile = ((TakesScreenshot) driverProvider.getObject()).getScreenshotAs(org.openqa.selenium.OutputType.FILE);
             FileHandler.copy(screenshotFile, new File(name));
             log.info("Screenshot was created {}", name);
         } catch (IOException e) {

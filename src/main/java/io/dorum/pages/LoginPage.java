@@ -1,9 +1,12 @@
 package io.dorum.pages;
 
+import io.dorum.utils.WaitUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.stereotype.Component;
 
 @Slf4j
@@ -16,19 +19,23 @@ public class LoginPage extends BasePage {
     private final By errorMessage = By.xpath("//h3[@data-test='error']");
     private final By logo = By.xpath("//div[@class = 'login_logo']");
 
+    public LoginPage(WaitUtils waitUtils, ObjectProvider<WebDriver> driverProvider) {
+        super(waitUtils, driverProvider);
+    }
+
     public void enterUsername(String username) {
         log.info("Entering username: {}", username);
-        driver.findElement(usernameField).sendKeys(username);
+         driverProvider.getObject().findElement(usernameField).sendKeys(username);
     }
 
     public void enterPassword(String password) {
         log.info("Entering password");
-        driver.findElement(passwordField).sendKeys(password);
+         driverProvider.getObject().findElement(passwordField).sendKeys(password);
     }
 
     public void clickLogin() {
         log.info("Clicking login button");
-        driver.findElement(loginButton).click();
+         driverProvider.getObject().findElement(loginButton).click();
     }
 
     public void login(String username, String password) {
@@ -41,7 +48,7 @@ public class LoginPage extends BasePage {
 
     public String getErrorMessageText() {
         try {
-            WebElement webElement = driver.findElement(errorMessage);
+            WebElement webElement =  driverProvider.getObject().findElement(errorMessage);
             if (webElement.isDisplayed()) {
                 String text = webElement.getText();
                 log.info("Error message: {}", text);
@@ -54,6 +61,6 @@ public class LoginPage extends BasePage {
     }
 
     public String getLogoText() {
-        return driver.findElement(logo).getText();
+        return  driverProvider.getObject().findElement(logo).getText();
     }
 }

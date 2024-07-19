@@ -1,25 +1,24 @@
 package io.dorum.utils;
 
+import lombok.AllArgsConstructor;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Lazy;
+import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.stereotype.Component;
 
 import java.time.Duration;
 
 @Component
+@AllArgsConstructor
 public class WaitUtils {
 
-    @Lazy
-    @Autowired
-    private WebDriver driver;
+    private ObjectProvider<WebDriver> driverProvider;
 
     private FluentWait<WebDriver> createFluentWait() {
-        return new FluentWait<>(driver)
+        return new FluentWait<>(driverProvider.getObject())
                 .withTimeout(Duration.ofSeconds(30))
                 .pollingEvery(Duration.ofSeconds(5))
                 .ignoring(Exception.class);
