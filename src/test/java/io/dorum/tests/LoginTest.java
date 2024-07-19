@@ -28,7 +28,7 @@ public class LoginTest extends BaseTest {
     @Autowired
     private ProductPage productPage;
 
-    @Value("${base.url}")
+    @Value("${baseUrl}")
     private String baseUrl;
 
     @Test(description = "Login test", dataProvider = "credentials")
