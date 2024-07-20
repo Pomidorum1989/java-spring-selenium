@@ -5,7 +5,7 @@ import org.apache.logging.log4j.core.config.plugins.validation.constraints.NotBl
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @Data
-@ConfigurationProperties
+@ConfigurationProperties()
 public class TestProperties {
     private String browser = "chrome";
     @NotBlank

@@ -1,6 +1,7 @@
 package io.dorum.pages;
 
 import io.dorum.utils.WaitUtils;
+import io.qameta.allure.Step;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
@@ -23,21 +24,25 @@ public class LoginPage extends BasePage {
         super(waitUtils, driverProvider);
     }
 
+    @Step("Entered user name {username}")
     public void enterUsername(String username) {
         log.info("Entering username: {}", username);
          driverProvider.getObject().findElement(usernameField).sendKeys(username);
     }
 
+    @Step("Entered password {password}")
     public void enterPassword(String password) {
         log.info("Entering password");
          driverProvider.getObject().findElement(passwordField).sendKeys(password);
     }
 
+    @Step("Clicked login button")
     public void clickLogin() {
         log.info("Clicking login button");
          driverProvider.getObject().findElement(loginButton).click();
     }
 
+    @Step("Starting logging")
     public void login(String username, String password) {
         log.info("Logging in with username: {}", username);
         enterUsername(username);

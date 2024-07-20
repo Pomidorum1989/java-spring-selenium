@@ -1,7 +1,7 @@
 ## Automation framework leveraging Spring and Selenium
 
 ### Description
-Simple test automation framework based on spring boot and selenium
+Simple test automation framework based on spring boot, selenium and Allure reporting
 
 ### Table of Contents
 - [Features](#features)

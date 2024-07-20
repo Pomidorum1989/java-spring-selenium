@@ -3,7 +3,6 @@ package io.dorum.config;
 import io.dorum.utils.WebDriverFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ThreadGuard;
 import org.springframework.beans.factory.config.CustomScopeConfigurer;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.*;
@@ -19,10 +18,10 @@ import java.util.Map;
 @Slf4j
 public class SpringTestConfig {
 
-    @Bean(destroyMethod = "quit")
+    @Bean
     @Scope("thread")
     public WebDriver webDriver(TestProperties properties) {
-        return ThreadGuard.protect(WebDriverFactory.createDriver(properties.getBrowser()));
+        return WebDriverFactory.createDriver(properties.getBrowser());
     }
 
     @Bean

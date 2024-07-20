@@ -1,5 +1,5 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Sause lab suite" parallel="methods" thread-count="3">
+<suite name="Sause lab" parallel="methods" thread-count="3">
     <test name="Login tests">
         <classes>
             <class name="io.dorum.tests.LoginTest"/>
