@@ -1,6 +1,7 @@
 package io.dorum.pages;
 
 import io.dorum.utils.WaitUtils;
+import io.qameta.allure.Step;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -23,11 +24,13 @@ public class ProductPage extends BasePage {
         return waitUtils.waitForElementToBeVisible(cartIcon).isDisplayed();
     }
 
+    @Step("Clicked main menu button")
     public void clickMenuBtn() {
         waitUtils.waitForElementToBeClickable(menuBtn).click();
         log.info("Clicked menu button");
     }
 
+    @Step("Clicked log out button")
     public void clickLogOutBtn() {
         waitUtils.waitForElementToBeClickable(logOutBtn).click();
         log.info("Clicked logout button");
