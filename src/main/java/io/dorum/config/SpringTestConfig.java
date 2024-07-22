@@ -1,6 +1,9 @@
 package io.dorum.config;
 
+import com.github.tomakehurst.wiremock.WireMockServer;
+import com.github.tomakehurst.wiremock.client.WireMock;
 import io.dorum.utils.WebDriverFactory;
+import io.dorum.utils.WireMockUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebDriver;
 import org.springframework.beans.factory.config.CustomScopeConfigurer;
@@ -12,6 +15,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Configuration
+@Profile("test")
 @ComponentScan(basePackages = "io.dorum")
 @PropertySource("classpath:application.properties")
 @EnableConfigurationProperties(TestProperties.class)
@@ -31,5 +35,10 @@ public class SpringTestConfig {
         newScopes.put("thread", new SimpleThreadScope());
         configure.setScopes(newScopes);
         return configure;
+    }
+
+    @Bean(destroyMethod = "stop")
+    public WireMockServer wireMockServer() {
+        return WireMockUtils.startServer();
     }
 }

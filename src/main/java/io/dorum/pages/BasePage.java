@@ -12,7 +12,6 @@ import org.springframework.beans.factory.ObjectProvider;
 public abstract class BasePage {
 
     protected WaitUtils waitUtils;
-
     protected ObjectProvider<WebDriver> driverProvider;
 
     @Step("Url is opened [{url}]")

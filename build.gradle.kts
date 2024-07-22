@@ -18,6 +18,9 @@ val testNGVersion = "7.10.2"
 val seleniumVersion = "4.22.0"
 val lombokVersion = "1.18.34"
 val bonigarciaVersion = "5.9.1"
+val restAssuredVersion = "5.5.0"
+val wireMockVersion = "3.9.0"
+val jsonVersion = "20240303"
 
 java {
     toolchain {
@@ -53,9 +56,7 @@ tasks.test {
         events("passed", "skipped", "failed")
     }
     doFirst {
-        jvmArgs = listOf(
-            "-javaagent:${agent.singleFile}"
-        )
+        jvmArgs = listOf("-javaagent:${agent.singleFile}")
     }
     doFirst {
         println("Starting testNG tests")
@@ -106,6 +107,18 @@ dependencies {
 
     // https://mvnrepository.com/artifact/com.github.automatedowl/allure-environment-writer
     implementation("com.github.automatedowl:allure-environment-writer:1.0.0")
+
+    // https://mvnrepository.com/artifact/io.qameta.allure/allure-rest-assured
+    implementation("io.qameta.allure:allure-rest-assured:$allureVersion")
+
+    // https://mvnrepository.com/artifact/io.rest-assured/rest-assured
+    implementation("io.rest-assured:rest-assured:$restAssuredVersion")
+
+    // https://mvnrepository.com/artifact/org.wiremock/wiremock
+    implementation("org.wiremock:wiremock:$wireMockVersion")
+
+    // https://mvnrepository.com/artifact/org.json/json
+    implementation("org.json:json:$jsonVersion")
 }
 
 repositories {
