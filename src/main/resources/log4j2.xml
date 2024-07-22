@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="WARN">
+    <properties>
+        <property name="pattern">%highlight{%-5level}{FATAL=red blink, ERROR=red, WARN=yellow bold, INFO=bright_white, DEBUG=green bold, TRACE=blue} %d{HH:mm:ss.SSS} %style{[%t]}{magenta} %-100style{%logger{36}.%M():%L}{cyan} - %m%n</property>
+    </properties>
     <Appenders>
         <Console name="Console" target="SYSTEM_OUT">
-            <PatternLayout disableAnsi="false" pattern="%highlight{%-5level}{FATAL=red blink, ERROR=red, WARN=yellow bold, INFO=bright_white, DEBUG=green bold, TRACE=blue} %d{HH:mm:ss.SSS} %style{[%t]}{magenta} %-100style{%logger{36}.%M():%L}{cyan} - %m%n"/>
+            <PatternLayout disableAnsi="false" pattern="${pattern}"/>
         </Console>
         <Routing name="RoutingAppender">
             <Routes pattern="$${ctx:threadName}">

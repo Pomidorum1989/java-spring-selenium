@@ -29,4 +29,8 @@ public class Config {
     public static String getBrowser() {
         return properties.getProperty("browser");
     }
+
+    public static String getMockUrl() {
+        return properties.getProperty("wiremockUrl");
+    }
 }

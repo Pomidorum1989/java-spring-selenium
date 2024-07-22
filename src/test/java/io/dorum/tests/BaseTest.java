@@ -3,6 +3,7 @@ package io.dorum.tests;
 import com.google.common.collect.ImmutableMap;
 import io.dorum.config.SpringTestConfig;
 import io.dorum.utils.Config;
+import io.dorum.utils.RestAssuredUtils;
 import io.qameta.allure.Attachment;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
@@ -14,6 +15,7 @@ import org.openqa.selenium.WebDriverException;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.ITestContext;
@@ -32,12 +34,12 @@ import static com.github.automatedowl.tools.AllureEnvironmentWriter.allureEnviro
 
 @Slf4j
 @SpringBootTest
+@ActiveProfiles("test")
 @ContextConfiguration(classes = SpringTestConfig.class)
 public abstract class BaseTest extends AbstractTestNGSpringContextTests {
 
     @Autowired
     protected ObjectProvider<WebDriver> driverProvider;
-
 
     @BeforeSuite
     public void beforeSuite() {
