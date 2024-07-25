@@ -1,4 +1,4 @@
-name: Java CI with Gradle
+name: Java CI with Gradle & Allure reporting
 
 on:
 #  push:
@@ -14,8 +14,7 @@ on:
         options:
           - 'sauce-lab-suite'
 jobs:
-  build:
-
+  test:
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -38,7 +37,7 @@ jobs:
         run: ./gradlew test -Dtestng.suite=src/test/resources/suits/${{ github.event.inputs.suite }}
 
       - name: Get Allure history
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         if: always()
         continue-on-error: true
         with:
