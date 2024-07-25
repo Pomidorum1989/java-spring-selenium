@@ -1,11 +1,18 @@
 name: Java CI with Gradle
 
 on:
-  push:
-    branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
-
+#  push:
+#    branches: [ "master" ]
+#  pull_request:
+#    branches: [ "master" ]
+  workflow_dispatch:
+    inputs:
+      suite:
+        description: 'Select the test suite to run'
+        required: true
+        default: 'sauce-lab-suite'
+        options:
+          - 'sauce-lab-suite'
 jobs:
   build:
 
@@ -28,7 +35,7 @@ jobs:
         uses: gradle/actions/setup-gradle@417ae3ccd767c252f5661f1ace9f835f9654f2b5 # v3.1.0
 
       - name: Build with Gradle Wrapper
-        run: ./gradlew build
+        run: ./gradlew test -Dtestng.suite=src/test/resources/suits/${{ github.event.inputs.suite }}
 
       - name: Get Allure history
         uses: actions/checkout@v2
@@ -38,7 +45,7 @@ jobs:
           ref: gh-pages
           path: gh-pages
 
-      - name: Test marketplace action
+      - name: Allure Report with history
         uses: simple-elf/allure-report-action@master
         if: always()
         id: allure-report

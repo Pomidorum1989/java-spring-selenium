@@ -49,8 +49,8 @@ allure {
 
 tasks.test {
     useTestNG {
-        suites("src/test/resources/testng.xml")
-//        threadCount = 2
+        val suite = System.getProperty("testng.suite", "src/test/resources/suits/sauce-lab-suite.xml")
+        suites(suite)
     }
     testLogging {
         events("passed", "skipped", "failed")
