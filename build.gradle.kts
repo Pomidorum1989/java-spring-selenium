@@ -73,6 +73,10 @@ tasks.allureReport() {
     }
 }
 
+tasks.bootJar {
+    mainClass.set("io.dorum.Main")
+}
+
 dependencies {
     agent("org.aspectj:aspectjweaver:$aspectJVersion")
     // https://mvnrepository.com/artifact/org.aspectj/aspectjweaver
