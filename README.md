@@ -22,4 +22,4 @@ Simple test automation framework based on spring boot, selenium and Allure repor
    ```bash
    git clone https://github.com/Pomidorum1989/java-spring-selenium
    cd your-repository
-   ./gradlew test -Dtestng.suite=src/test/resources/suits/sause-lab-suite.xml
+   ./gradlew test -Dtestng.suite=src/test/resources/suits/sauce-lab-suite.xml -Dbrowser=chrome

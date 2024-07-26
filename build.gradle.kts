@@ -51,6 +51,7 @@ tasks.test {
     useTestNG {
         val suite = System.getProperty("testng.suite", "src/test/resources/suits/sauce-lab-suite.xml")
         suites(suite)
+        systemProperty("browser", System.getProperty("browser", "chrome"))
     }
     testLogging {
         events("passed", "skipped", "failed")

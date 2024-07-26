@@ -4,6 +4,7 @@ import lombok.extern.log4j.Log4j2;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Objects;
 import java.util.Properties;
 
 @Log4j2
@@ -27,6 +28,10 @@ public class Config {
     }
 
     public static String getBrowser() {
+        String browser = System.getProperty("browser");
+        if (Objects.nonNull(browser)) {
+            properties.setProperty("browser", browser);
+        }
         return properties.getProperty("browser");
     }
 
