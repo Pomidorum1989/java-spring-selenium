@@ -1,0 +1,7 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Fri Jul 26 03:38:48 GMT 2024","Fri Jul 26 03:39:16 GMT 2024","27904","Sauce lab","Login tests","io.dorum.tests.LoginTest","io.dorum.tests.LoginTest","testLogin","Login test","Sauce lab login test"
+"passed","Fri Jul 26 03:38:48 GMT 2024","Fri Jul 26 03:39:20 GMT 2024","32438","Sauce lab","Login tests","io.dorum.tests.LoginTest","io.dorum.tests.LoginTest","testLogin","Login test","Sauce lab login test"
+"broken","Fri Jul 26 03:38:48 GMT 2024","Fri Jul 26 03:39:41 GMT 2024","52859","Sauce lab","Login tests","io.dorum.tests.LoginTest","io.dorum.tests.LoginTest","testLogin","Login test","Sauce lab login test"
+"passed","Fri Jul 26 03:38:48 GMT 2024","Fri Jul 26 03:39:16 GMT 2024","27938","Sauce lab","Login tests","io.dorum.tests.LoginTest","io.dorum.tests.LoginTest","testLogin","Login test","Sauce lab login test"
+"passed","Fri Jul 26 03:38:48 GMT 2024","Fri Jul 26 03:39:16 GMT 2024","27858","Sauce lab","Login tests","io.dorum.tests.LoginTest","io.dorum.tests.LoginTest","testLogin","Login test","Sauce lab login test"
+"passed","Fri Jul 26 03:38:48 GMT 2024","Fri Jul 26 03:39:16 GMT 2024","28089","Sauce lab","Login tests","io.dorum.tests.LoginTest","io.dorum.tests.LoginTest","testLogin","Login test","Sauce lab login test"
