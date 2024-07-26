@@ -24,9 +24,7 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      pages: write
+    permissions: write-all
 
     steps:
       - name: Checkout Repository
@@ -68,8 +66,8 @@ jobs:
         uses: peaceiris/actions-gh-pages@v4
         if: always()
         with:
-#          personal_token: ${{ secrets.PERSONAL_TOKEN }}
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          personal_token: ${{ secrets.PERSONAL_TOKEN }}
+#          github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
           publish_dir: allure-history
 
