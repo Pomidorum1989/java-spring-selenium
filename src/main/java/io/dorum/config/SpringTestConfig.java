@@ -1,7 +1,6 @@
 package io.dorum.config;
 
 import com.github.tomakehurst.wiremock.WireMockServer;
-import com.github.tomakehurst.wiremock.client.WireMock;
 import io.dorum.utils.WebDriverFactory;
 import io.dorum.utils.WireMockUtils;
 import lombok.extern.slf4j.Slf4j;

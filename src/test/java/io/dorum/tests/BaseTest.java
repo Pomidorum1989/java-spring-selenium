@@ -3,7 +3,6 @@ package io.dorum.tests;
 import com.google.common.collect.ImmutableMap;
 import io.dorum.config.SpringTestConfig;
 import io.dorum.utils.Config;
-import io.dorum.utils.RestAssuredUtils;
 import io.qameta.allure.Attachment;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
