@@ -44,7 +44,7 @@ jobs:
         uses: gradle/actions/setup-gradle@v3.5.0
 
       - name: Build and Test with Gradle
-        run: ./gradlew test -Dtestng.suite=src/test/resources/suits/${{ github.event.inputs.suite }} -Dbrowser=${{ github.event.inputs.browser }}
+        run: ./gradlew test -Dtestng.suite=src/test/resources/suits/${{ github.event.inputs.suite }}.xml -Dbrowser=${{ github.event.inputs.browser }}
 
       - name: Checkout gh-pages
         if: always()
