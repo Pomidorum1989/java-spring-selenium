@@ -4,20 +4,22 @@ on:
   workflow_dispatch:
     inputs:
       suite:
-        description: 'Select the test suite to run'
+        description: Select the test suite to run
         required: true
-        default: 'sauce-lab-suite'
+        default: sauce-lab-suite
+        type: choice
         options:
-          - 'sauce-lab-suite'
+          - sauce-lab-suite
       browser:
-        description: 'Select the browser to run tests'
+        description: Select the browser to run tests
         required: true
-        default: 'chrome'
+        default: chrome
+        type: choice
         options:
-          - 'chrome'
-          - 'firefox'
-          - 'edge'
-          - 'chrome_docker'
+          - chrome
+          - firefox
+          - edge
+          - chrome_docker
 
 jobs:
   test:
@@ -39,14 +41,14 @@ jobs:
 #        uses: browser-actions/setup-chrome@v1.7.2
 
       - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v3.1.0
+        uses: gradle/actions/setup-gradle@v3.5.0
 
       - name: Build and Test with Gradle
         run: ./gradlew test -Dtestng.suite=src/test/resources/suits/${{ github.event.inputs.suite }} -Dbrowser=${{ github.event.inputs.browser }}
 
       - name: Checkout gh-pages
         if: always()
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4.1.7
         continue-on-error: true
         with:
           ref: gh-pages
@@ -54,21 +56,22 @@ jobs:
 
       - name: Generate Allure Report with History
         if: always()
-        uses: simple-elf/allure-report-action@master
-        id: allure-report
+        uses: simple-elf/allure-report-action@v1.9
+#        id: allure-report
         with:
           allure_results: build/allure-results
-          gh_pages: gh-pages
-          allure_report: build/reports/allure-report
+#          gh_pages: gh-pages
+#          allure_report: build/reports/allure-report
           allure_history: allure-history
+          keep_reports: 20
 
       - name: Deploy Allure Report to GitHub Pages
         if: always()
-        uses: peaceiris/actions-gh-pages@v3
-        env:
-          PERSONAL_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
-          PUBLISH_BRANCH: gh-pages
-          PUBLISH_DIR: allure-history
+        uses: peaceiris/actions-gh-pages@v4.0.0
+        with:
+          personal_token: ${{ secrets.PERSONAL_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: allure-history
 
       - name: Generate and Submit Dependency Graph
         uses: gradle/actions/dependency-submission@v3

@@ -55,6 +55,7 @@ tasks.test {
     }
     testLogging {
         events("passed", "skipped", "failed")
+        showStandardStreams = true
     }
     doFirst {
         jvmArgs = listOf("-javaagent:${agent.singleFile}")
