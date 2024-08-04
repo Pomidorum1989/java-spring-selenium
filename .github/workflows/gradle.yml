@@ -36,9 +36,6 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
 
-      #      - name: Setup Chrome
-      #        uses: browser-actions/setup-chrome@v1.7.2
-
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3.5.0
 
